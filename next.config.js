@@ -1,6 +1,11 @@
 module.exports = {
   reactStrictMode: true,
-  images: {
-    domains: ['storage.googleapis.com']
-  }
+  async rewrites() {
+    return [
+      {
+        source: '/proxy/:path*',
+        destination: 'https://storage.googleapis.com/nextjs-arbitrary-image-path/:path*',
+      },
+    ]
+  },
 }
